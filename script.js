@@ -3,7 +3,8 @@ const background = document.querySelector('.background');
 let isJumping = false;
 let position = 0;
 let colision = false;
-const space = 32, jumpSpeed = 10, moveSpeed = 10;
+let enemySize = 100;
+const space = 32, jumpSpeed = 15, moveSpeed = 15, jumpHeight = 200;
 
 
 function handleKeyUp(event){
@@ -23,7 +24,7 @@ function jump(){
     isJumping = true;
 
     let upInterval = setInterval(() => {
-        if (position >= 150) {
+        if (position >= jumpHeight) {
             clearInterval(upInterval);
 
             // falling
@@ -46,7 +47,7 @@ function jump(){
 
 function spawnCactus() {
     const cactus = document.createElement('div');
-    let cactusPosition = 1000;
+    let cactusPosition = 1300;
     let rngSpawnTime = Math.random() * 6000;
 
     cactus.classList.add('cactus');
@@ -55,10 +56,10 @@ function spawnCactus() {
 
     let leftInterval = setInterval(() => {
         
-        if (cactusPosition < -60) {
+        if (cactusPosition < -enemySize) {
             clearInterval(leftInterval);
             background.removeChild(cactus);
-        }else if (cactusPosition > 0 && cactusPosition < 50 && position < 50){
+        }else if (cactusPosition > 0 && cactusPosition < enemySize-10 && position < enemySize-10){
             // game o ver
             clearInterval(leftInterval);
             document.body.innerHTML = '<h1 class="game-over">You\'re dead sir / ma\'am.</h1>';
@@ -69,6 +70,7 @@ function spawnCactus() {
         }
     }, 20)
 
+	// stops cactus from spawning after game ends
     !colision ? setTimeout(spawnCactus, rngSpawnTime): null;
 }
 

@@ -5,17 +5,19 @@ body{
 .dino{
     height: 60px;
     width: 60px;
-    background-image: url(img/dino.png);
+    background: url(img/levi.png) no-repeat;
+    background-size: 100%;
     position: absolute;
     bottom: 0;
 }
 
 .cactus{
     position: absolute;
-    width: 60px;
-    height: 60px;
+    width: 100px;
+    height: 100px;
     bottom: 0;
-    background-image: url(img/cactus.png);
+    background: url(img/titan.png) no-repeat;
+    background-size: 100%;
 }
 
 .game-over{
@@ -38,9 +40,8 @@ body{
 .background{
     position: absolute;
     bottom: 0;
-    background-image: url(img/background.png);
-    background-repeat: repeat-x;
+    background: url(img/wall.png) repeat-x;
     animation: slideright 600s infinite linear;
-    width: 100%;
-    height: 200px;
+    height: 100vh;
+    width: 100vw;
 }
